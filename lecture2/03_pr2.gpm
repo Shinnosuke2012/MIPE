@@ -1,0 +1,19 @@
+set title "y = exp(x)-x*x"
+set xzeroaxis
+set xlabel "x"
+set xrange [-10:6]
+set xtics 2
+set mxtics 2
+set yzeroaxis
+set ylabel "y"
+set yrange [-100:100]
+set ytics 20
+set mytics 2
+set size square
+f(x) = exp(x)-x*x
+plot f(x)
+
+set term png 
+set output "fx.png"
+replot
+

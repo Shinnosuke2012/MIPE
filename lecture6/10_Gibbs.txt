@@ -1,0 +1,31 @@
+﻿double gl(double x,double t){ // L相の自由エネルギー
+  return (1250.*R-R*t)*(1.-x)+(750.*R-R*t)*x+WL*(1.-x)*x+R*t*(x*log(x)-(1.-x)*log(1.-x));
+}
+
+double gs(double x,double t){ // S相の自由エネルギー
+  return +WS*(1.-x)*x+R*t*(x*log(x)-(1.-x)*log(1.-x));
+}
+
+double g(double y,double z,double t){ // 講義資料の関数①
+  return ((1250.*R-R*t)+WL*y*y+R*t*log(1.-y))-(WS*z*z+R*t*log(1.-z));
+}
+
+double h(double y,double z,double t){ // 講義資料の関数②
+  return ((750.*R-R*t)+WL*(1.-y)*(1.-y)+R*t*log(y))-(WS*(1.-z)*(1.-z)+R*t*log(z));
+}
+
+double dgdy(double y,double z,double t){ // 講義資料の関数③
+  return 2.*WL*y -R*t/(1.-y);
+}
+
+double dgdz(double y,double z,double t){ // 講義資料の関数④
+  return -2.*WS*z +R*t/(1.-z);
+}
+
+double dhdy(double y,double z,double t){ // 講義資料の関数⑤
+  return -2.*WL*(1.-y) +R*t/y;
+}
+
+double dhdz(double y,double z,double t){ // 講義資料の関数⑥
+  return 2.*WS*(1.-z) -R*t/z;
+}

@@ -1,0 +1,25 @@
+set title "free energy diagram"
+set xzeroaxis
+set xlabel "x_B"
+set xrange [0:1]
+set yzeroaxis
+set ylabel "Gibbs Free Energy, G_m/KJ*mol^-1"
+set size square
+
+T = 1100
+R = 8.31447
+GLA = 1250*R - R*T
+GLB = 750*R - R*T
+WL = 25*R*60
+GSA = 0
+GSB = 0
+WS = 25*R*(150 - 60)
+
+gl(x) = (GLA*(1.-x) + GLB*x + WL*x*(1. -x) + R*T*(x*log(x) + (1. -x)*log(1. -x)))/1000
+gs(x) = (GSA*(1.-x) + GSB*x + WS*x*(1. -x) + R*T*(x*log(x) + (1. -x)*log(1. -x)))/1000
+
+plot gl(x),gs(x)
+
+set term png 
+set output "energy.png"
+replot
